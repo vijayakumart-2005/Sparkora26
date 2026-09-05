@@ -4,7 +4,7 @@ import jceCrest from "@/assets/jce-crest.png";
 
 export function Footer() {
   return (
-    <footer className="px-5 py-16 sm:px-8">
+    <footer className="relative z-10 border-t border-white/10 bg-card/25 px-5 py-16 backdrop-blur-md sm:px-8">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_auto]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

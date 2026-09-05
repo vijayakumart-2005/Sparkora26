@@ -1,7 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { Clock } from "lucide-react";
 import { event } from "@/data/event";
-import { ParticleField } from "./ParticleField";
 import { Countdown } from "./Countdown";
 
 function Title() {
@@ -50,7 +49,6 @@ export function Hero() {
           style={{ animationDelay: "3.5s" }}
         />
       </div>
-      <ParticleField />
 
       <motion.p
         initial={{ opacity: 0, y: -10 }}

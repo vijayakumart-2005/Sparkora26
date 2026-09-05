@@ -11,7 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { timeline } from "@/data/event";
-import { Reveal, Section, SectionHeading } from "./primitives";
+import { Reveal, SlideSection, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
 
 const icons: LucideIcon[] = [Flag, Mic, Rocket, MessagesSquare, UploadCloud, Terminal, Award];
@@ -60,7 +60,7 @@ function Card({
   return (
     <article
       className={cn(
-        "group relative overflow-hidden rounded-xl border border-border bg-card/40 p-6 transition-colors duration-500 hover:border-primary/50",
+        "glass-card group relative overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:border-primary/50 hover:bg-card/50",
         alignRight && "md:text-right",
       )}
     >
@@ -95,7 +95,7 @@ export function Timeline() {
   const height = useTransform(progress, [0, 1], ["0%", "100%"]);
 
   return (
-    <Section id="timeline" className="bg-navy/40">
+    <SlideSection id="timeline" slideIndex="03 // TIMELINE" slideTag="SCHEDULE">
       <SectionHeading
         eyebrow="Timeline"
         title="The Journey"
@@ -106,7 +106,7 @@ export function Timeline() {
         {/* rail */}
         <div
           aria-hidden="true"
-          className="absolute top-0 bottom-0 left-3 w-px bg-border md:left-1/2 md:-translate-x-1/2"
+          className="absolute top-0 bottom-0 left-3 w-px bg-white/10 md:left-1/2 md:-translate-x-1/2"
         >
           <motion.div
             style={{ height }}
@@ -120,7 +120,6 @@ export function Timeline() {
           ))}
         </ol>
       </div>
-
-    </Section>
+    </SlideSection>
   );
 }

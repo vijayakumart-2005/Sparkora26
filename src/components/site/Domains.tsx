@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { domains } from "@/data/event";
-import { Reveal, Section, SectionHeading } from "./primitives";
+import { Reveal, SlideSection, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
 
 // Asymmetric premium layout
@@ -53,7 +53,7 @@ const domainConfig = [
 
 export function Domains() {
   return (
-    <Section id="domains">
+    <SlideSection id="domains" slideIndex="02 // DOMAINS" slideTag="4 TRACKS">
       <SectionHeading
         eyebrow="Tracks"
         title="Domains"
@@ -69,7 +69,7 @@ export function Domains() {
                 whileHover={{ y: -6, scale: 1.015 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
                 className={cn(
-                  "relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border bg-card/60 p-7 sm:p-9",
+                  "relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-card/40 backdrop-blur-xl p-7 sm:p-9 shadow-xl",
                   heights[i],
                 )}
               >
@@ -138,6 +138,6 @@ export function Domains() {
           );
         })}
       </div>
-    </Section>
+    </SlideSection>
   );
 }

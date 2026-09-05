@@ -11,6 +11,8 @@ import { Organizers } from "@/components/site/Organizers";
 import { FAQ } from "@/components/site/FAQ";
 import { RegistrationCTA } from "@/components/site/RegistrationCTA";
 import { Footer } from "@/components/site/Footer";
+import { CustomCursor } from "@/components/site/CustomCursor";
+import { AnimatedBackground } from "@/components/site/AnimatedBackground";
 
 const title = "SPARKORA'26 — Spark. Build. Impact. | Hackathon at JCE Chennai";
 const description =
@@ -42,10 +44,12 @@ function ScrollProgress() {
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-[#05070e] cursor-none selection:bg-ember/30">
+      <AnimatedBackground />
+      <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <main>
+      <main className="relative z-10 pb-16 space-y-4 sm:space-y-6 md:space-y-8">
         <Hero />
         <About />
         <Domains />

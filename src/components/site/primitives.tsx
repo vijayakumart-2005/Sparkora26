@@ -15,9 +15,86 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("relative scroll-mt-24 px-5 py-24 sm:px-8 md:py-32", className)}
+      className={cn("relative scroll-mt-24 px-5 py-20 sm:px-8 md:py-28", className)}
     >
       <div className="mx-auto w-full max-w-6xl">{children}</div>
+    </section>
+  );
+}
+
+export function SlideSection({
+  id,
+  children,
+  className,
+  slideIndex,
+  slideTag,
+}: {
+  id?: string;
+  children: ReactNode;
+  className?: string;
+  slideIndex?: string;
+  slideTag?: string;
+}) {
+  const reduce = useReducedMotion();
+  return (
+    <section
+      id={id}
+      className="relative scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14 md:px-8 md:py-16"
+    >
+      <div className="mx-auto w-full max-w-6xl">
+        <motion.div
+          initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: reduce ? 0 : 0.75, ease: [0.16, 1, 0.3, 1] }}
+          className={cn(
+            "slide-overlay relative overflow-hidden p-6 sm:p-10 md:p-12 lg:p-14",
+            "hover:border-primary/40 transition-colors duration-500",
+            className,
+          )}
+        >
+          {/* Top luminous accent beam */}
+          <span
+            aria-hidden="true"
+            className="rule-gradient absolute inset-x-0 top-0 h-[2px] opacity-75"
+          />
+
+          {/* Corner tech accents */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-3.5 left-3.5 h-3 w-3 border-t border-l border-primary/40"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-3.5 right-3.5 h-3 w-3 border-t border-r border-ember/40"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-3.5 left-3.5 h-3 w-3 border-b border-l border-primary/40"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-3.5 right-3.5 h-3 w-3 border-b border-r border-ember/40"
+          />
+
+          {/* Slide index header */}
+          {slideIndex ? (
+            <div className="mb-8 flex items-center justify-between gap-4 border-b border-white/8 pb-4">
+              <span className="font-display text-[0.65rem] sm:text-xs font-bold tracking-[0.3em] text-primary/80 uppercase">
+                {slideIndex}
+              </span>
+              {slideTag ? (
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-0.5 font-display text-[0.6rem] sm:text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
+                  {slideTag}
+                </span>
+              ) : null}
+            </div>
+          ) : null}
+
+          {/* Slide Content */}
+          <div className="relative z-10">{children}</div>
+        </motion.div>
+      </div>
     </section>
   );
 }
